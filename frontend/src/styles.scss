@@ -1,0 +1,85 @@
+@import "./styles/grid";
+
+// initial reset
+html {
+  font-size: 14px;
+  box-sizing: border-box;
+  // fonts for all not material elements
+  font-family: $mainFontFamily;
+}
+
+.canvas-wrapper {
+  border: 1px solid darkgray;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body
+// h1, h2, h3, h4, h5, h6,
+// p 
+{
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  // @include mat-typography-level-to-styles($config, body-1);
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.display-none {
+  display: none;
+}
+
+@include keyframes(fadeIn) {
+  from {
+    opacity: 0;
+    // transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    // transform: translateY(0);
+  }
+}
+
+@include keyframes(fadeOut) {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animationAppear03s {
+  @include animation(fadeIn 0.3s forwards);
+}
+
+.animationDissappear03s {
+  @include animation(fadeOut 0.3s forwards);
+}
+
+.animationAppear05s {
+  @include animation(fadeIn 0.5s forwards);
+}
+
+.animationAppear1s {
+  @include animation(fadeIn 1s forwards);
+}

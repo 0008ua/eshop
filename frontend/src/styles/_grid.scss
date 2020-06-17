@@ -1,0 +1,221 @@
+@import "./mixins";
+
+$space-gt-md: 12px;
+$space-md: 12px;
+$space-sm: 8px;
+$space-xs: 8px;
+
+// x - scale parameter
+@mixin responsive-padding($x) {
+  @include gt-md {
+    padding: calc(#{$x} * #{$space-gt-md});
+  }
+  @include md {
+    padding: calc(#{$x} * #{$space-md});
+  }
+  @include sm {
+    padding: calc(#{$x} * #{$space-sm});
+  }
+  @include xs {
+    padding: calc(#{$x} * #{$space-xs});
+  }
+}
+
+@mixin responsive-padding-trbl($top, $right, $bottom, $left) {
+  @include gt-md {
+    padding: calc(#{$top} * #{$space-gt-md}) calc(#{$right} * #{$space-gt-md}) calc(#{$bottom} * #{$space-gt-md}) calc(#{$left} * #{$space-gt-md})
+  }
+  @include md {
+    padding: calc(#{$top} * #{$space-md}) calc(#{$right} * #{$space-md}) calc(#{$bottom} * #{$space-md}) calc(#{$left} * #{$space-md})
+  }
+  @include sm {
+    padding: calc(#{$top} * #{$space-sm}) calc(#{$right} * #{$space-sm}) calc(#{$bottom} * #{$space-sm}) calc(#{$left} * #{$space-sm})
+  }
+  @include xs {
+    padding: calc(#{$top} * #{$space-xs}) calc(#{$right} * #{$space-xs}) calc(#{$bottom} * #{$space-xs}) calc(#{$left} * #{$space-xs})
+  }
+}
+
+@mixin responsive-padding-v($x) {
+  @include gt-md {
+    padding-top: calc(#{$x} * #{$space-gt-md});
+    padding-bottom: calc(#{$x} * #{$space-gt-md});
+  }
+  @include md {
+    padding-top: calc(#{$x} * #{$space-md});
+    padding-bottom: calc(#{$x} * #{$space-md});
+  }
+  @include sm {
+    padding-top: calc(#{$x} * #{$space-sm});
+    padding-bottom: calc(#{$x} * #{$space-sm});
+  }
+  @include xs {
+    padding-top: calc(#{$x} * #{$space-xs});
+    padding-bottom: calc(#{$x} * #{$space-xs});
+  }
+}
+
+@mixin responsive-padding-h($x) {
+  @include gt-md {
+    padding-left: calc(#{$x} * #{$space-gt-md});
+    padding-right: calc(#{$x} * #{$space-gt-md});
+  }
+  @include md {
+    padding-left: calc(#{$x} * #{$space-md});
+    padding-right: calc(#{$x} * #{$space-md});
+  }
+  @include sm {
+    padding-left: calc(#{$x} * #{$space-sm});
+    padding-right: calc(#{$x} * #{$space-sm});
+  }
+  @include xs {
+    padding-left: calc(#{$x} * #{$space-xs});
+    padding-right: calc(#{$x} * #{$space-xs});
+  }
+}
+
+.container {
+  @include gt-md {
+    padding: $space-gt-md;
+  }
+  @include md {
+    padding: $space-md;
+  }
+  @include sm {
+    padding: $space-sm;
+  }
+  @include xs {
+    padding: $space-xs;
+  }
+  &-column {
+    height: 100%;
+  }
+
+  // additional to container, add top and bottom padding
+  &-v {
+    @include gt-xs {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+  }
+  // additional to container, add left and right padding
+  &-h {
+    @include gt-md {
+      padding-left: 64px;
+      padding-right: 64px;
+    }
+    @include md {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include gt-md {
+    margin: -($space-gt-md);
+  }
+  @include md {
+    margin: -($space-md);
+  }
+  @include sm {
+    margin: -($space-sm);
+  }
+  @include xs {
+    margin: -($space-xs);
+  }
+}
+
+.column {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include gt-md {
+    margin: -($space-gt-md);
+    height: calc(100% + (2 * #{$space-gt-md}));
+  }
+  @include md {
+    margin: -($space-md);
+    height: calc(100% + (2 * #{$space-md}));
+  }
+  @include sm {
+    margin: -($space-sm);
+    height: calc(100% + (2 * #{$space-sm}));
+  }
+  @include xs {
+    margin: -($space-xs);
+    height: calc(100% + (2 * #{$space-xs}));
+  }
+}
+
+.cell {
+  @include gt-md {
+    padding: $space-gt-md;
+  }
+  @include md {
+    padding: $space-md;
+  }
+  @include sm {
+    padding: $space-sm;
+  }
+  @include xs {
+    padding: $space-xs;
+  }
+}
+
+.cell_full-width {
+  @include gt-md {
+    padding: $space-gt-md;
+  }
+  @include md {
+    padding: $space-md;
+  }
+  @include sm {
+    padding: $space-sm;
+  }
+  @include xs {
+    padding: $space-xs 0;
+  }
+}
+
+.item {
+  @include gt-md {
+    @include first {
+      padding-left: 0;
+    }
+    @include last {
+      padding-right: 0;
+    }
+    padding: 0 calc(#{$space-gt-md}/ 2);
+  }
+  @include md {
+    @include first {
+      padding-left: 0;
+    }
+    @include last {
+      padding-right: 0;
+    }
+    padding: 0 calc(#{$space-md}/ 2);
+  }
+  @include sm {
+    @include first {
+      padding-left: 0;
+    }
+    @include last {
+      padding-right: 0;
+    }
+    padding: 0 calc(#{$space-sm}/ 2);
+  }
+  @include xs {
+    @include first {
+      padding-left: 0;
+    }
+    @include last {
+      padding-right: 0;
+    }
+    padding: 0 calc(#{$space-xs}/ 2);
+  }
+}

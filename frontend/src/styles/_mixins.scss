@@ -1,0 +1,166 @@
+@import './material';
+
+// xs          0 -  599 / p: 8|0 / 1col     - 599 / 1col     - 599
+// sm        600 -  959 / p: 8   / 3col 184 - 303 / 2col 276 - 455
+// md        960 - 1279 / p: 12  / 4col 216 - 295 / 3col 296 - 402 / img 225*400
+// lg=gt-md 1280 - 1919 / p: 12  / 6col 189 - 295 / 5col 232 - 360
+// xl       1920 - 5000
+// lt-sm         -  599
+// lt-md         -  959
+// lt-lg         - 1279
+// lt-xl         - 1919
+// gt-xs     600 -
+// gt-sm     960 -
+// gt-md    1280 -
+// gt-xl    1920 -
+
+// notebook 1536x864 and 1304x697
+// x500 393x619 699x313 // 980x1544 981x439
+//  k50 360x560 640x280 // 980x1525 980x429
+
+$screen-xs-min: 0px;
+$screen-sm-min: 600px;
+$screen-md-min: 960px;
+$screen-lg-min: 1280px;
+$screen-xl-min: 1920px;
+
+@mixin xs	{ // 0-599
+  @media screen and (max-width: $screen-sm-min - 1px) {
+    @content;
+  }
+}
+@mixin sm	{ // 600-959
+  @media screen and (min-width: $screen-sm-min) and (max-width: $screen-md-min - 1px) {
+    @content;
+  }
+}
+@mixin md	{ // 960-1279
+  @media screen and (min-width: $screen-md-min) and (max-width: $screen-lg-min - 1px) {
+    @content;
+  }
+}
+@mixin lg { // 1280-1919
+  @media screen and (min-width: $screen-lg-min) and (max-width: $screen-xl-min - 1px) {
+    @content;
+  }
+}
+@mixin xl { // 1920-5000
+  @media screen and (min-width: $screen-xl-min) {
+    @content;
+  }
+}
+
+@mixin lt-sm { // - 599
+  @media screen and (max-width: $screen-sm-min - 1px) {
+    @content;
+  }
+}
+@mixin lt-md { // - 959
+  @media screen and (max-width: $screen-md-min - 1px) {
+    @content;
+  }
+}
+@mixin lt-lg { // - 1279
+  @media screen and (max-width: $screen-lg-min - 1px) {
+    @content;
+  }
+}
+@mixin lt-xl { // -1919
+  @media screen and (max-width: $screen-xl-min - 1px) {
+    @content;
+  }
+}
+
+@mixin gt-xs { // 600-
+  @media screen and (min-width: $screen-xs-min) {
+    @content;
+  }
+}
+@mixin gt-sm { // 960
+  @media screen and (min-width: $screen-md-min) {
+    @content;
+  }
+}
+@mixin gt-md { // 1280-
+  @media screen and (min-width: $screen-lg-min) {
+    @content;
+  }
+}
+@mixin gt-lg {
+  @media screen and (min-width: $screen-xl-min) {
+    @content;
+  }
+}
+
+@mixin after-child-element($num) {
+  &:nth-child(n+#{$num+1}) {
+    @content;
+  }
+}
+
+@mixin first {
+  &:nth-child(1) {
+    @content;
+  }
+}
+
+@mixin last {
+  &:nth-last-child(1) {
+    @content;
+  }
+}
+
+@mixin first-and-last {
+  &:nth-child(1),
+  &:nth-last-child(1) {
+    @content;
+  }
+}
+
+@mixin hov {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin radius($amount) {
+  border-radius: $amount;
+  -moz-border-radius: $amount;
+  -webkit-border-radius: $amount;
+}
+
+@mixin transition($value) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+}
+
+@mixin transform($value) {
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -o-transform: $value;
+  transform: $value;
+}
+
+@mixin animation($value) {
+  animation: $value;
+  -webkit-animation: $value;
+  -moz-animation: $value;
+  -ms-animation: $value;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}

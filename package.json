@@ -1,0 +1,39 @@
+{
+  "name": "eshop",
+  "version": "1.0.0",
+  "description": "e-shop based on MEAN stack",
+  "private": true,
+  "main": "./server/bin/www",
+  "scripts": {
+    "start": "node ./server/bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "~1.4.4",
+    "csurf": "^1.11.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.17",
+    "morgan": "~1.9.1",
+    "nconf": "^0.10.0",
+    "nodemailer": "^6.4.8",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0",
+    "pug": "2.0.0-beta11",
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.8",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}

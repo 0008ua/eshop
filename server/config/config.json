@@ -1,0 +1,59 @@
+{
+  "port": 8083,
+  "defaults": {
+    "productPicture": "default_product",
+    "userPicture": "default_avatar"
+  },
+  "permissions": {
+    "admin": [
+      "casual",
+      "guest",
+      "user",
+      "manager",
+      "admin",
+      "google",
+      "facebook"
+    ],
+    "manager": [
+      "casual",
+      "guest",
+      "user",
+      "manager",
+      "google",
+      "facebook"
+    ],
+    "user": [
+      "casual",
+      "guest",
+      "user",
+      "google",
+      "facebook"
+    ],
+    "google": [
+      "casual",
+      "guest",
+      "user",
+      "google"
+    ],
+    "facebook": [
+      "casual",
+      "guest",
+      "user",
+      "facebook"
+    ],
+    "guest": [
+      "casual",
+      "guest"
+    ],
+    "casual": [
+      "casual"
+    ]
+  },
+  "mailOptions": {
+    "questionFromSite": {
+      "from": "Shop <questionfromsite@xx.xx>",
+      "to": "info@xx.xx",
+      "subject": "Питання з сайту"
+    }
+  }
+}

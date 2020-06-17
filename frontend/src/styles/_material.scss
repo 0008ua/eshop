@@ -1,0 +1,175 @@
+@import "~@angular/material/theming";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400|Roboto:300,400&subset=cyrillic");
+
+$mainFontFamily: "Roboto", sans-serif;
+
+$custom-typography: mat-typography-config(
+  $font-family: $mainFontFamily
+);
+
+@include angular-material-typography($custom-typography);
+@include mat-core($custom-typography);
+
+$config: mat-typography-config();
+
+$mat-custom-blue: (
+50 : #e9eaf5,
+    100 : #c8cbe5,
+    200 : #a4a9d4,
+    300 : #7f87c3,
+    400 : #636db6,
+    500 : #4853a9,
+    600 : #414ca2,
+    700 : #384298,
+    800 : #30398f,
+    900 : #21297e,
+    A100 : #bdc2ff,
+    A200 : #8a93ff,
+    A400 : #5764ff,
+    A700 : #3d4cff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$dark-theme: mat-dark-theme(mat-palette($mat-custom-blue), mat-palette($mat-blue), mat-palette($mat-red));
+$light-theme: mat-light-theme(mat-palette($mat-custom-blue), mat-palette($mat-light-blue), mat-palette($mat-red));
+
+
+$main-theme: $light-theme;
+@include angular-material-theme($main-theme);
+
+$primary: map-get($main-theme, primary);
+$accent: map-get($main-theme, accent);
+$warn: map-get($main-theme, warn);
+$foreground: map-get($main-theme, foreground);
+$background: map-get($main-theme, background);
+
+
+    // font-size: mat-font-size($config, title);
+    // font-family: mat-font-family($config);
+    // line-height: mat-line-height($config, title);
+    // font-weight: mat-font-weight($config, title);
+    
+    // @include mat-typography-level-to-styles($config, body-1);
+
+// @function mat-typography-config(
+//   $font-family:   'Roboto, "Helvetica Neue", sans-serif',
+//   $display-4:     mat-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+//   $display-3:     mat-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+//   $display-2:     mat-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+//   $display-1:     mat-typography-level(34px, 40px, 400),
+//   $headline:      mat-typography-level(24px, 32px, 400),
+//   $title:         mat-typography-level(20px, 32px, 500),
+//   $subheading-2:  mat-typography-level(16px, 28px, 400),
+//   $subheading-1:  mat-typography-level(15px, 24px, 400),
+//   $body-2:        mat-typography-level(14px, 24px, 500),
+//   $body-1:        mat-typography-level(14px, 20px, 400),
+//   $caption:       mat-typography-level(12px, 20px, 400),
+//   $button:        mat-typography-level(14px, 14px, 500),
+//   // Line-height must be unit-less fraction of the font-size.
+//   $input:         mat-typography-level(inherit, 1.125, 400)
+// ) {
+
+//   // Declare an initial map with all of the levels.
+//   $config: (
+//     display-4:      $display-4,
+//     display-3:      $display-3,
+//     display-2:      $display-2,
+//     display-1:      $display-1,
+//     headline:       $headline,
+//     title:          $title,
+//     subheading-2:   $subheading-2,
+//     subheading-1:   $subheading-1,
+//     body-2:         $body-2,
+//     body-1:         $body-1,
+//     caption:        $caption,
+//     button:         $button,
+//     input:          $input,
+//   );
+
+// // Background palette for light themes.
+// $mat-light-theme-background: (
+//   status-bar: map_get($mat-grey, 300),
+//   app-bar:    map_get($mat-grey, 100),
+//   background: map_get($mat-grey, 50),
+//   hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+//   card:       white,
+//   dialog:     white,
+//   disabled-button: rgba(black, 0.12),
+//   raised-button: white,
+//   focused-button: $dark-focused,
+//   selected-button: map_get($mat-grey, 300),
+//   selected-disabled-button: map_get($mat-grey, 400),
+//   disabled-button-toggle: map_get($mat-grey, 200),
+//   unselected-chip: map_get($mat-grey, 300),
+//   disabled-list-option: map_get($mat-grey, 200),
+// );
+
+// // Background palette for dark themes.
+// $mat-dark-theme-background: (
+//   status-bar: black,
+//   app-bar:    map_get($mat-grey, 900),
+//   background: #303030,
+//   hover:      rgba(white, 0.04), // TODO(kara): check style with Material Design UX
+//   card:       map_get($mat-grey, 800),
+//   dialog:     map_get($mat-grey, 800),
+//   disabled-button: rgba(white, 0.12),
+//   raised-button: map-get($mat-grey, 800),
+//   focused-button: $light-focused,
+//   selected-button: map_get($mat-grey, 900),
+//   selected-disabled-button: map_get($mat-grey, 800),
+//   disabled-button-toggle: black,
+//   unselected-chip: map_get($mat-grey, 700),
+//   disabled-list-option: black,
+// );
+
+// // Foreground palette for light themes.
+// $mat-light-theme-foreground: (
+//   base:              black,
+//   divider:           $dark-dividers,
+//   dividers:          $dark-dividers,
+//   disabled:          $dark-disabled-text,
+//   disabled-button:   rgba(black, 0.26),
+//   disabled-text:     $dark-disabled-text,
+//   hint-text:         $dark-disabled-text,
+//   secondary-text:    $dark-secondary-text,
+//   icon:              rgba(black, 0.54),
+//   icons:             rgba(black, 0.54),
+//   text:              rgba(black, 0.87),
+//   slider-min:        rgba(black, 0.87),
+//   slider-off:        rgba(black, 0.26),
+//   slider-off-active: rgba(black, 0.38),
+// );
+
+// // Foreground palette for dark themes.
+// $mat-dark-theme-foreground: (
+//   base:              white,
+//   divider:           $light-dividers,
+//   dividers:          $light-dividers,
+//   disabled:          $light-disabled-text,
+//   disabled-button:   rgba(white, 0.3),
+//   disabled-text:     $light-disabled-text,
+//   hint-text:         $light-disabled-text,
+//   secondary-text:    $light-secondary-text,
+//   icon:              white,
+//   icons:             white,
+//   text:              white,
+//   slider-min:        white,
+//   slider-off:        rgba(white, 0.3),
+//   slider-off-active: rgba(white, 0.3),
+// );
+
