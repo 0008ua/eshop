@@ -13,14 +13,15 @@ $custom-typography: mat-typography-config(
 
 $config: mat-typography-config();
 
-
-$dark-theme: mat-dark-theme(mat-palette($dark-blue), mat-palette($soft-pink), mat-palette($mat-red));
-$light-theme: mat-light-theme(mat-palette($dark-blue), mat-palette($custom-blue), mat-palette($mat-red));
-
 $slate-ceramic-theme: mat-dark-theme(mat-palette($slate), mat-palette($ceramic), mat-palette($mat-red));
 $coffee-latte-theme: mat-light-theme(mat-palette($coffee), mat-palette($latte), mat-palette($mat-red));
 
-$main-theme: $light-theme;
+$slate-manat-theme: mat-light-theme(mat-palette($slate), mat-palette($manat), mat-palette($mat-red));
+
+$space-manat-palette: mat-light-theme(mat-palette($space), mat-palette($manat), mat-palette($mat-red));
+$space-alice-palette: mat-light-theme(mat-palette($space), mat-palette($alice), mat-palette($mat-red));
+
+$main-theme: $slate-manat-theme;
 @include angular-material-theme($main-theme);
 
 $primary: map-get($main-theme, primary);
@@ -28,8 +29,6 @@ $accent: map-get($main-theme, accent);
 $warn: map-get($main-theme, warn);
 $foreground: map-get($main-theme, foreground);
 $background: map-get($main-theme, background);
-
-
 
 // font-size: mat-font-size($config, title);
 // font-family: mat-font-family($config);
