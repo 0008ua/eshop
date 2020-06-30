@@ -1,7 +1,16 @@
-<nav>
-  <ul>
-    <li>
-      menu item
-    </li>
-  </ul>
-</nav>
+<ul class="main-nav__list" fxLayout="row">
+  <li *ngFor="let navItem of mainNavCommon" class="main-nav__item" fxFlex fxLayoutAlign="center center">
+    <a mat-button class="link" [routerLink]="['/', navItem._id]" [routerLinkActive]="['link_active']"
+      [routerLinkActiveOptions]="{exact: true}">
+      <span class="link__text">{{navItem.name}}</span>
+    </a>
+  </li>
+  <li fxFlex></li>
+  <li *ngFor="let navItem of mainNavSystem" class="main-nav__item" fxFlex fxLayoutAlign="center center">
+    <a mat-button class="link" [routerLink]="['/', navItem._id]" [routerLinkActive]="['link_active']"
+      [routerLinkActiveOptions]="{exact: true}">
+      <i class="link__icon item fas fa-share"></i>
+      <span class="link__text">{{navItem.name}}</span>
+    </a>
+  </li>
+</ul>

@@ -112,7 +112,7 @@ $space-xs: 8px;
 }
 
 .row {
-  display: flex;
+  // display: flex;
   flex-wrap: wrap;
 
   @include gt-md {

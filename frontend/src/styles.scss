@@ -18,10 +18,9 @@ html {
   box-sizing: inherit;
 }
 
-body
-// h1, h2, h3, h4, h5, h6,
-// p 
-{
+body {
+  // apply material styles to non material elements (containers)
+  @extend .mat-app-background;
   padding: 0;
   margin: 0;
 }
@@ -29,8 +28,8 @@ body
 ul {
   list-style: none;
   padding-inline-start: 0;
+  margin: 0;
 }
-
 a,
 a:visited,
 a:hover,
@@ -83,3 +82,134 @@ a:hover {
 .animationAppear1s {
   @include animation(fadeIn 1s forwards);
 }
+
+.link {
+  &__icon,
+  &__text {
+    vertical-align: middle; // align with siblings
+    color: mat-color($primary);
+  }
+  &__icon {
+    font-size: mat-font-size($config, subheading-2);
+  }
+  &__text {
+    @include mat-typography-level-to-styles($config, body-1);
+  }
+  &_active {
+    .link {
+      &__icon,
+      &__text {
+        color: mat-color($accent);
+      }
+    }
+  }
+  &_disabled {
+    .link {
+      &__icon,
+      &__text {
+        color: mat-color($foreground, disabled-text);
+      }
+    }
+  }
+}
+
+$slate: map-get($slate-ceramic-theme, primary);
+$ceramic: map-get($slate-ceramic-theme, accent);
+$coffee: map-get($coffee-latte-theme, primary);
+$latte: map-get($coffee-latte-theme, accent);
+
+.header {
+  background-color: mat-color($slate, 800);
+  .link {
+    &__icon,
+    &__text {
+      color: mat-color($ceramic, 100);
+    }
+
+    &_active {
+      .link {
+        &__icon,
+        &__text {
+          color: mat-color($ceramic, 500);
+        }
+      }
+    }
+    &_disabled {
+      .link {
+        &__icon,
+        &__text {
+          color: mat-color($foreground, disabled-text);
+        }
+      }
+    }
+  }
+}
+
+.scroll-nav {
+  background-color: mat-color($slate, 800);
+  .link {
+    &__icon,
+    &__text {
+      color: mat-color($ceramic, 100);
+    }
+    &__icon {
+      font-size: mat-font-size($config, body-1);
+    }
+    &__text {
+      @include mat-typography-level-to-styles($config, caption);
+    }
+    &_active {
+      .link {
+        &__icon,
+        &__text {
+          color: mat-color($ceramic, 500);
+        }
+      }
+    }
+    &_disabled {
+      .link {
+        &__icon,
+        &__text {
+          color: mat-color($foreground, disabled-text);
+        }
+      }
+    }
+  }
+  // @include angular-material-theme($slate-ceramic-theme);
+}
+
+// dark styled elements
+// @mixin dark-theme-styles($theme) {
+//   $primary: map-get($theme, primary);
+//   $accent: map-get($theme, accent);
+//   $warn: map-get($theme, accent);
+//   $foreground: map-get($theme, foreground);
+//   $background: map-get($theme, background);
+
+//   .header {
+//     .link {
+//       &__icon,
+//       &__text {
+//         color: mat-color($primary, 100);
+//       }
+//       &_active {
+//         .link {
+//           &__icon,
+//           &__text {
+//             color: mat-color($foreground, text);
+//           }
+//         }
+//       }
+//       &_disabled {
+//         .link {
+//           &__icon,
+//           &__text {
+//             color: mat-color($foreground, disabled-text);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @include dark-theme-styles($dark-theme);

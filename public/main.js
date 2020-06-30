@@ -44,7 +44,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<header><app-header></app-header></header>\r\n<main><router-outlet></router-outlet></main>\r\n<footer><app-footer></app-footer></footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("\r\n<header class=\"header container\">\r\n  <app-header class=\"row\" fxLayout=\"row\"></app-header>\r\n</header>\r\n<main>\r\n  <router-outlet></router-outlet>\r\n</main>\r\n<footer>\r\n  <app-footer></app-footer>\r\n</footer>");
 
 /***/ }),
 
@@ -57,7 +57,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>footer works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("  <p>footer works!</p>\r\n      <a mat-button class=\"link\" [routerLink]=\"['/']\" [routerLinkActive]=\"['link_active']\"\r\n        [routerLinkActiveOptions]=\"{exact: true}\">\r\n        <span class=\"link__text\">Link</span>\r\n      </a>");
 
 /***/ }),
 
@@ -96,7 +96,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>header works!</p>\n<app-main-nav></app-main-nav>\n<app-scroll-nav></app-scroll-nav>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"header__logo cell\" fxFlex=\"20\" fxLayoutAlign=\"center center\">\n  Logo\n</div>\n<nav class=\"header__main-nav main-nav cell\" fxFlex=\"80\">\n  <app-main-nav></app-main-nav>\n</nav>\n<nav class=\"header__scroll-nav scroll-nav cell\" fxFlex=\"100\">\n  <app-scroll-nav></app-scroll-nav>\n</nav>\n\n\n<!-- <header class=\"header\">\n  <app-header>\n    <div class=\"header__logo\">logo</div>\n    <nav class=\"header__main-nav main-nav\">\n      <app-main-nav>\n        <ul class=\"main-nav__list\">\n          <li class=\"main-nav__item\"></li>\n          <li class=\"main-nav__item\"></li>\n          <li class=\"main-nav__item\"></li>\n        </ul>\n      </app-main-nav>\n    </nav>\n    <nav class=\"header__scroll-nav scroll-nav\">\n      <app-scroll-nav>\n        <ul class=\"scroll-nav__list\">\n          <li class=\"scroll-nav__item link\">\n            <a class=\"link__anchor\">\n              <i class=\"link__icon fas fa-share\"></i>\n              <span class=\"link__text\">text</span>\n            </a>\n          </li>\n          <li class=\"scroll-nav__item\"></li>\n          <li class=\"scroll-nav__item\"></li>\n        </ul>\n      </app-scroll-nav>\n    </nav>\n  </app-header>\n</header> -->");
 
 /***/ }),
 
@@ -109,7 +109,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav>\n  <ul>\n    <li>\n      menu item\n    </li>\n  </ul>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ul class=\"main-nav__list\" fxLayout=\"row\">\n  <li *ngFor=\"let navItem of mainNavCommon\" class=\"main-nav__item\" fxFlex fxLayoutAlign=\"center center\">\n    <a mat-button class=\"link\" [routerLink]=\"['/', navItem._id]\" [routerLinkActive]=\"['link_active']\"\n      [routerLinkActiveOptions]=\"{exact: true}\">\n      <span class=\"link__text\">{{navItem.name}}</span>\n    </a>\n  </li>\n  <li fxFlex></li>\n  <li *ngFor=\"let navItem of mainNavSystem\" class=\"main-nav__item\" fxFlex fxLayoutAlign=\"center center\">\n    <a mat-button class=\"link\" [routerLink]=\"['/', navItem._id]\" [routerLinkActive]=\"['link_active']\"\n      [routerLinkActiveOptions]=\"{exact: true}\">\n      <i class=\"link__icon item fas fa-share\"></i>\n      <span class=\"link__text\">{{navItem.name}}</span>\n    </a>\n  </li>\n</ul>");
 
 /***/ }),
 
@@ -122,7 +122,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>scroll-nav works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ul class=\"nscroll-nav__list\" fxLayout=\"row\">\n  <li *ngFor=\"let navItem of scrollNav\" class=\"scroll-nav__item disabled\" fxFlex fxLayoutAlign=\"center center\">\n    <a mat-button class=\"link\" [routerLink]=\"['/', navItem._id]\" [routerLinkActive]=\"['link_active']\"\n      [routerLinkActiveOptions]=\"{exact: true}\">\n      <span class=\"link__text\">{{navItem.name}}</span>\n    </a>\n  </li>\n</ul>");
 
 /***/ }),
 
@@ -492,6 +492,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
 /* harmony import */ var _components_page404_page404_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/page404/page404.component */ "./src/app/components/page404/page404.component.ts");
 /* harmony import */ var _modules_header_header_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/header/header.module */ "./src/app/modules/header/header.module.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
 
 
 
@@ -518,6 +520,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
             _modules_header_header_module__WEBPACK_IMPORTED_MODULE_11__["HeaderModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"],
             _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_5__["BrowserAnimationsModule"],
             _angular_service_worker__WEBPACK_IMPORTED_MODULE_6__["ServiceWorkerModule"].register('ngsw-worker.js', { enabled: _environments_environment__WEBPACK_IMPORTED_MODULE_7__["environment"].production })
         ],
@@ -662,6 +665,50 @@ Page404Component = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/material.module.ts":
+/*!************************************!*\
+  !*** ./src/app/material.module.ts ***!
+  \************************************/
+/*! exports provided: MaterialModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaterialModule", function() { return MaterialModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm2015/flex-layout.js");
+
+
+
+
+let MaterialModule = class MaterialModule {
+};
+MaterialModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [],
+        imports: [
+            _angular_flex_layout__WEBPACK_IMPORTED_MODULE_3__["FlexLayoutModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatIconModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatInputModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCardModule"],
+        ],
+        exports: [
+            _angular_flex_layout__WEBPACK_IMPORTED_MODULE_3__["FlexLayoutModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatIconModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatInputModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCardModule"],
+        ],
+    })
+], MaterialModule);
+
+
+
+/***/ }),
+
 /***/ "./src/app/modules/header/header.component.scss":
 /*!******************************************************!*\
   !*** ./src/app/modules/header/header.component.scss ***!
@@ -722,6 +769,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./header.component */ "./src/app/modules/header/header.component.ts");
 /* harmony import */ var _main_nav_main_nav_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main-nav/main-nav.component */ "./src/app/modules/header/main-nav/main-nav.component.ts");
 /* harmony import */ var _scroll_nav_scroll_nav_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scroll-nav/scroll-nav.component */ "./src/app/modules/header/scroll-nav/scroll-nav.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_material_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/material.module */ "./src/app/material.module.ts");
+
+
 
 
 
@@ -734,7 +785,9 @@ HeaderModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [_header_component__WEBPACK_IMPORTED_MODULE_3__["HeaderComponent"], _main_nav_main_nav_component__WEBPACK_IMPORTED_MODULE_4__["MainNavComponent"], _scroll_nav_scroll_nav_component__WEBPACK_IMPORTED_MODULE_5__["ScrollNavComponent"]],
         imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"],
+            src_app_material_module__WEBPACK_IMPORTED_MODULE_7__["MaterialModule"],
         ],
         exports: [_header_component__WEBPACK_IMPORTED_MODULE_3__["HeaderComponent"]],
     })
@@ -769,13 +822,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainNavComponent", function() { return MainNavComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_services_catalog_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/catalog.service */ "./src/app/services/catalog.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+
+
 
 
 let MainNavComponent = class MainNavComponent {
-    constructor() { }
+    constructor(catalogService) {
+        this.catalogService = catalogService;
+    }
     ngOnInit() {
+        this.mainNavCommon$ = this.catalogService.getChildren('common');
+        this.mainNavSystem$ = this.catalogService.getChildren('system');
+        Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["combineLatest"])(this.mainNavCommon$, this.mainNavSystem$)
+            .subscribe(data => {
+            this.mainNavCommon = data[0];
+            this.mainNavSystem = data[1];
+        });
     }
 };
+MainNavComponent.ctorParameters = () => [
+    { type: src_app_services_catalog_service__WEBPACK_IMPORTED_MODULE_2__["CatalogService"] }
+];
 MainNavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-main-nav',
@@ -813,13 +882,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScrollNavComponent", function() { return ScrollNavComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_services_catalog_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/catalog.service */ "./src/app/services/catalog.service.ts");
+
 
 
 let ScrollNavComponent = class ScrollNavComponent {
-    constructor() { }
+    constructor(catalogService) {
+        this.catalogService = catalogService;
+    }
     ngOnInit() {
+        this.catalogService.getScrollableChildren('common')
+            .subscribe(scrollNav => this.scrollNav = scrollNav);
     }
 };
+ScrollNavComponent.ctorParameters = () => [
+    { type: src_app_services_catalog_service__WEBPACK_IMPORTED_MODULE_2__["CatalogService"] }
+];
 ScrollNavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-scroll-nav',
@@ -827,6 +905,56 @@ ScrollNavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./scroll-nav.component.scss */ "./src/app/modules/header/scroll-nav/scroll-nav.component.scss")).default]
     })
 ], ScrollNavComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/catalog.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/catalog.service.ts ***!
+  \*********************************************/
+/*! exports provided: CatalogService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CatalogService", function() { return CatalogService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
+
+let CatalogService = class CatalogService {
+    constructor(http) {
+        this.http = http;
+    }
+    getChildren(id) {
+        const httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.get('api/catalog/get-children/' + id, httpOptions);
+    }
+    getScrollableChildren(id) {
+        const httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.get('api/catalog/get-scrollable-children/' + id, httpOptions);
+    }
+};
+CatalogService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+CatalogService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], CatalogService);
 
 
 
@@ -848,7 +976,8 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 
 const environment = {
-    production: false
+    production: false,
+    localDB: {}
 };
 /*
  * For easier debugging in development mode, you can import the following file
