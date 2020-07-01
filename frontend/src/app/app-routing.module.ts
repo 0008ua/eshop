@@ -6,6 +6,10 @@ import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
+    path: 'products',
+    loadChildren: './modules/products/products.module#ProductsModule',
+  },
+  {
     path: 'feedback',
     loadChildren: './modules/feedback/feedback.module#FeedbackModule',
   },
