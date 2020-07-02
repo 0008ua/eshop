@@ -18,6 +18,10 @@ const routes: Routes = [
     component: Page404Component
   },
   {
+    path: 'common',
+    redirectTo: ''
+  },
+  {
     path: '',
     component: HomeComponent,
     pathMatch: 'full'

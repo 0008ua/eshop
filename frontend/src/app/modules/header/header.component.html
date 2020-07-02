@@ -1,11 +1,11 @@
 <div class="header__logo cell" fxFlex="20" fxLayoutAlign="center center">
-  Logo
+ <a class="link" href="#">Logo</a>
 </div>
 <nav class="header__main-nav main-nav cell" fxFlex="80" fxLayoutAlign="start center">
   <app-main-nav fxFlex></app-main-nav>
 </nav>
-<nav class="header__scroll-nav scroll-nav cell" fxFlex="100" fxLayoutAlign="center center">
-  <app-scroll-nav></app-scroll-nav>
+<nav *ngIf="scrollNav?.length" class="header__scroll-nav scroll-nav cell" fxFlex="100" fxLayoutAlign="center center">
+  <app-scroll-nav [scrollNav]="scrollNav"></app-scroll-nav>
 </nav>
 
 

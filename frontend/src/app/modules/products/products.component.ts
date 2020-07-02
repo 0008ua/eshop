@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { IProduct } from 'src/app/interfaces';
+import { ProductService } from 'src/app/services/product.service';
 
 
 @Component({
@@ -11,19 +13,15 @@ import { of } from 'rxjs';
 })
 export class ProductsComponent implements OnInit {
 
-  private product: any;
+  private products: IProduct[];
   constructor(
     private route: ActivatedRoute,
+    private productService: ProductService,
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.pipe(
-      switchMap(paramMap => {
-        this.product = paramMap.get('product');
-        console.log('this.product', this.product);
-        return of('x-product');
-      }))
-        .subscribe(x => console.log('x', x));
+    this.productService.getProducts()
+      .subscribe(products => this.products = products);
   }
 
 }

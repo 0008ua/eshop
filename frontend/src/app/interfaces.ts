@@ -12,3 +12,13 @@ export interface ICatalog {
   seoTitle: string;
   seoMeta: string;
 }
+
+export interface IProduct {
+  _id: string;
+  name: string;
+  parent: string;
+  picture?: string;
+  description?: string;
+  seoTitle: string;
+  seoMeta: string;
+}

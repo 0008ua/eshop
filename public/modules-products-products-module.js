@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>product-detail works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<p>product-detail works!</p>\n{{product | json}}");
 
 /***/ }),
 
@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>product-feed works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("{{product | json}}\n");
 
 /***/ }),
 
@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>products works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<section *ngFor=\"let product of products\">\n    <app-product-feed [product]=\"product\"></app-product-feed>\n\n</section>");
 
 /***/ }),
 
@@ -64,13 +64,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductDetailComponent", function() { return ProductDetailComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_services_product_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/product.service */ "./src/app/services/product.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
+
 
 
 let ProductDetailComponent = class ProductDetailComponent {
-    constructor() { }
+    constructor(productService, route) {
+        this.productService = productService;
+        this.route = route;
+    }
     ngOnInit() {
+        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(paramMap => {
+            const id = paramMap.get('product');
+            console.log('id', id);
+            return this.productService.getProduct(id);
+        }))
+            .subscribe(product => this.product = product);
     }
 };
+ProductDetailComponent.ctorParameters = () => [
+    { type: src_app_services_product_service__WEBPACK_IMPORTED_MODULE_2__["ProductService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }
+];
 ProductDetailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-product-detail',
@@ -115,6 +134,9 @@ let ProductFeedComponent = class ProductFeedComponent {
     ngOnInit() {
     }
 };
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], ProductFeedComponent.prototype, "product", void 0);
 ProductFeedComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-product-feed',
@@ -141,14 +163,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _products_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./products.component */ "./src/app/modules/products/products.component.ts");
+/* harmony import */ var _product_detail_product_detail_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./product-detail/product-detail.component */ "./src/app/modules/products/product-detail/product-detail.component.ts");
+
 
 
 
 
 const routes = [
     {
-        path: ':product',
+        path: '',
         component: _products_component__WEBPACK_IMPORTED_MODULE_3__["ProductsComponent"],
+    },
+    {
+        path: ':product',
+        component: _product_detail_product_detail_component__WEBPACK_IMPORTED_MODULE_4__["ProductDetailComponent"],
     },
 ];
 let ProductsRoutingModule = class ProductsRoutingModule {
@@ -190,28 +218,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
-
+/* harmony import */ var src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/product.service */ "./src/app/services/product.service.ts");
 
 
 
 
 let ProductsComponent = class ProductsComponent {
-    constructor(route) {
+    constructor(route, productService) {
         this.route = route;
+        this.productService = productService;
     }
     ngOnInit() {
-        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(paramMap => {
-            this.product = paramMap.get('product');
-            console.log('this.product', this.product);
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])('x-product');
-        }))
-            .subscribe(x => console.log('x', x));
+        this.productService.getProducts()
+            .subscribe(products => this.products = products);
     }
 };
 ProductsComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: src_app_services_product_service__WEBPACK_IMPORTED_MODULE_3__["ProductService"] }
 ];
 ProductsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -266,6 +290,56 @@ ProductsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         ]
     })
 ], ProductsModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/product.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/product.service.ts ***!
+  \*********************************************/
+/*! exports provided: ProductService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductService", function() { return ProductService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
+
+let ProductService = class ProductService {
+    constructor(http) {
+        this.http = http;
+    }
+    getProduct(id) {
+        const httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.get('api/product/get-product/' + id, httpOptions);
+    }
+    getProducts() {
+        const httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+            }),
+        };
+        return this.http.get('api/product/get-products/', httpOptions);
+    }
+};
+ProductService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+ProductService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], ProductService);
 
 
 

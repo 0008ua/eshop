@@ -113,16 +113,13 @@ a:hover {
   }
 }
 
-
 .header {
-  height: 135px;
   background-color: mat-color($primary, 500);
   .link {
     &__icon,
     &__text {
       color: mat-color($alice, 200);
     }
-
     &_active {
       .link {
         &__icon,
@@ -140,16 +137,19 @@ a:hover {
       }
     }
   }
-}
-
-.main-nav {
-  height: 80px;
+  &__logo {
+    height: 80px;
+  }
+  &__main-nav {
+    height: 80px;
+  }
+  &__scroll-nav {
+    height: 55px;
+  }
 }
 
 .scroll-nav {
     background-color: mat-color($primary, 800);
-
-  height: 55px;
   .link {
     // &__icon,
     // &__text {

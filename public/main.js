@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"header__logo cell\" fxFlex=\"20\" fxLayoutAlign=\"center center\">\r\n  Logo\r\n</div>\r\n<nav class=\"header__main-nav main-nav cell\" fxFlex=\"80\" fxLayoutAlign=\"start center\">\r\n  <app-main-nav fxFlex></app-main-nav>\r\n</nav>\r\n<nav class=\"header__scroll-nav scroll-nav cell\" fxFlex=\"100\" fxLayoutAlign=\"center center\">\r\n  <app-scroll-nav></app-scroll-nav>\r\n</nav>\r\n\r\n\r\n<!-- <header class=\"header\">\r\n  <app-header>\r\n    <div class=\"header__logo\">logo</div>\r\n    <nav class=\"header__main-nav main-nav\">\r\n      <app-main-nav>\r\n        <ul class=\"main-nav__list\">\r\n          <li class=\"main-nav__item\"></li>\r\n          <li class=\"main-nav__item\"></li>\r\n          <li class=\"main-nav__item\"></li>\r\n        </ul>\r\n      </app-main-nav>\r\n    </nav>\r\n    <nav class=\"header__scroll-nav scroll-nav\">\r\n      <app-scroll-nav>\r\n        <ul class=\"scroll-nav__list\">\r\n          <li class=\"scroll-nav__item link\">\r\n            <a class=\"link__anchor\">\r\n              <i class=\"link__icon fas fa-share\"></i>\r\n              <span class=\"link__text\">text</span>\r\n            </a>\r\n          </li>\r\n          <li class=\"scroll-nav__item\"></li>\r\n          <li class=\"scroll-nav__item\"></li>\r\n        </ul>\r\n      </app-scroll-nav>\r\n    </nav>\r\n  </app-header>\r\n</header> -->");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"header__logo cell\" fxFlex=\"20\" fxLayoutAlign=\"center center\">\r\n <a class=\"link\" href=\"#\">Logo</a>\r\n</div>\r\n<nav class=\"header__main-nav main-nav cell\" fxFlex=\"80\" fxLayoutAlign=\"start center\">\r\n  <app-main-nav fxFlex></app-main-nav>\r\n</nav>\r\n<nav *ngIf=\"scrollNav?.length\" class=\"header__scroll-nav scroll-nav cell\" fxFlex=\"100\" fxLayoutAlign=\"center center\">\r\n  <app-scroll-nav [scrollNav]=\"scrollNav\"></app-scroll-nav>\r\n</nav>\r\n\r\n\r\n<!-- <header class=\"header\">\r\n  <app-header>\r\n    <div class=\"header__logo\">logo</div>\r\n    <nav class=\"header__main-nav main-nav\">\r\n      <app-main-nav>\r\n        <ul class=\"main-nav__list\">\r\n          <li class=\"main-nav__item\"></li>\r\n          <li class=\"main-nav__item\"></li>\r\n          <li class=\"main-nav__item\"></li>\r\n        </ul>\r\n      </app-main-nav>\r\n    </nav>\r\n    <nav class=\"header__scroll-nav scroll-nav\">\r\n      <app-scroll-nav>\r\n        <ul class=\"scroll-nav__list\">\r\n          <li class=\"scroll-nav__item link\">\r\n            <a class=\"link__anchor\">\r\n              <i class=\"link__icon fas fa-share\"></i>\r\n              <span class=\"link__text\">text</span>\r\n            </a>\r\n          </li>\r\n          <li class=\"scroll-nav__item\"></li>\r\n          <li class=\"scroll-nav__item\"></li>\r\n        </ul>\r\n      </app-scroll-nav>\r\n    </nav>\r\n  </app-header>\r\n</header> -->");
 
 /***/ }),
 
@@ -126,7 +126,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ul class=\"nscroll-nav__list\" fxLayout=\"row\">\r\n  <li *ngFor=\"let navItem of scrollNav\" class=\"scroll-nav__item disabled\" fxFlex fxLayoutAlign=\"center center\">\r\n    <a mat-button class=\"link\" [routerLink]=\"['/', navItem._id]\" [routerLinkActive]=\"['link_active']\"\r\n      [routerLinkActiveOptions]=\"{exact: true}\">\r\n      <span class=\"link__text\">{{navItem.name}}</span>\r\n    </a>\r\n  </li>\r\n</ul>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ul class=\"nscroll-nav__list\" fxLayout=\"row\">\r\n  <li *ngFor=\"let navItem of scrollNav\" class=\"scroll-nav__item disabled\" fxFlex fxLayoutAlign=\"center center\">\r\n    <a mat-button class=\"link\" [routerLink]=\"['/', navItem.parent, navItem._id]\" [routerLinkActive]=\"['link_active']\"\r\n      [routerLinkActiveOptions]=\"{exact: true}\">\r\n      <span class=\"link__text\">{{navItem.name}}</span>\r\n    </a>\r\n  </li>\r\n</ul>");
 
 /***/ }),
 
@@ -416,6 +416,10 @@ const routes = [
     {
         path: 'page-404',
         component: _components_page404_page404_component__WEBPACK_IMPORTED_MODULE_3__["Page404Component"]
+    },
+    {
+        path: 'common',
+        redirectTo: ''
     },
     {
         path: '',
@@ -742,13 +746,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_services_catalog_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/catalog.service */ "./src/app/services/catalog.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
+
 
 
 let HeaderComponent = class HeaderComponent {
-    constructor() { }
+    constructor(catalogService, route, router) {
+        this.catalogService = catalogService;
+        this.route = route;
+        this.router = router;
+    }
     ngOnInit() {
+        this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["filter"])((event) => event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__["NavigationEnd"]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])((event) => {
+            const url = event.url.split('/');
+            const lastUrlSegment = url[url.length - 1];
+            console.log('lastUrlSegment', lastUrlSegment);
+            return lastUrlSegment;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(lastUrlSegment => {
+            return this.catalogService.getScrollableChildren(lastUrlSegment || 'common');
+        }))
+            .subscribe(scrollNav => this.scrollNav = scrollNav);
     }
 };
+HeaderComponent.ctorParameters = () => [
+    { type: src_app_services_catalog_service__WEBPACK_IMPORTED_MODULE_2__["CatalogService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+];
 HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-header',
@@ -890,62 +918,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScrollNavComponent", function() { return ScrollNavComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var src_app_services_catalog_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/catalog.service */ "./src/app/services/catalog.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-
-
-
 
 
 let ScrollNavComponent = class ScrollNavComponent {
-    constructor(catalogService, route) {
-        this.catalogService = catalogService;
-        this.route = route;
-    }
+    constructor() { }
     ngOnInit() {
-        // const routerEvents$ = this.router.events.pipe(
-        //   filter((event) => event instanceof NavigationEnd),
-        //   map((event: NavigationEnd) => {
-        //     if (event.url.split('/')[1] === 'products' || event.url.split('/')[1] === '') {
-        //       this.productsUrl = true;
-        //     } else {
-        //       this.productsUrl = false;
-        //     }
-        //     gtag('config', 'UA-151728431-1',
-        //       {
-        //         page_path: event.urlAfterRedirects
-        //       }
-        //     );
-        //   }),
-        //   map(() => this.route),
-        //   map((route) => {
-        //     while (route.firstChild) {
-        //       route = route.firstChild;
-        //     }
-        //     return route;
-        //   }),
-        //   filter(route => route.outlet === 'primary'));
-        // const store$ = this.store.select('app');
-        // combineLatest(
-        //   routerEvents$.pipe(mergeMap((route) => route.queryParamMap)), // query params
-        //   routerEvents$.pipe(mergeMap((route) => route.data)), // routing.module data
-        //   store$.pipe(map(appStore => appStore.lang)) // fires on lang changed
-        // )
-        this.route.paramMap.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(paramMap => {
-            // this.product = paramMap.get('product');
-            // console.log('this.product', this.product);
-            return this.catalogService.getScrollableChildren('products');
-        }))
-            .subscribe(scrollNav => this.scrollNav = scrollNav);
-        // this.catalogService.getScrollableChildren('products')
-        //   .subscribe(scrollNav => this.scrollNav = scrollNav);
     }
 };
-ScrollNavComponent.ctorParameters = () => [
-    { type: src_app_services_catalog_service__WEBPACK_IMPORTED_MODULE_2__["CatalogService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }
-];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], ScrollNavComponent.prototype, "scrollNav", void 0);
 ScrollNavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-scroll-nav',

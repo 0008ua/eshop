@@ -17,6 +17,7 @@ const { setCSRFCookie, setFrontendAuthCookie } = require('./server/middlewares')
 const { router } = require('./server/routes');
 const userRouter = require('./server/routes/userRouter');
 const catalogRouter = require('./server/routes/catalogRouter');
+const productRouter = require('./server/routes/productRouter');
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use(setFrontendAuthCookie);
  */
 app.use('/api/user', userRouter);
 app.use('/api/catalog', catalogRouter);
+app.use('/api/product', productRouter);
 app.use('/api', (req, res, next) =>
   next(new ClientError({
     message: 'Wrong api',
