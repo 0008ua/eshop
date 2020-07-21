@@ -1,1 +1,6 @@
-<p>home works!</p>
+<div class="homepage">
+  <section [id]="product._id" *ngFor="let product of products; let i = index" class="homepage__section container-h container-v" 
+  appScrolling #scrollerMarker (elementOnScreen)="onElementOnScreen(product._id)">
+    <app-product-feed [product]="product"></app-product-feed>
+  </section>
+</div>

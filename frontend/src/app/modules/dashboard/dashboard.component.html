@@ -1,0 +1,30 @@
+<mat-sidenav-container fxFlex>
+  <mat-sidenav class="sidenav" #dashboardSidenav position="start" closed role="navigation" mode="side" (click)="dashboardSidenav.close()">
+    <div class="container">
+      <div class="row" fxLayout="row">
+        <div class="cell" *ngFor="let dashboardRootMenuItem of dashboardRootMenu" fxFlex="100" fxLayoutAlign="center">
+          <a class="link" mat-button [routerLink]="['/', 'dashboard', dashboardRootMenuItem._id]" [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{exact: false}">
+                    <i class="link__icon fas fa-spa"></i>
+                    <span class="link__icon-text">{{dashboardRootMenuItem[sharedService.createLangField('name')]}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container-h container-v">
+      <div class="container">
+        <div class="row">
+          <div class="cell" fxShow="true" fxFlex="100" fxLayoutAlign="start center">
+            <button class="link" mat-button (click)="dashboardSidenav.toggle()" aria-label="Menu">
+              <span *ngIf="dashboardSidenav.opened"><i class="link__icon fas fa-angle-left"></i></span>
+              <span *ngIf="!dashboardSidenav.opened"><i class="link__icon fas fa-angle-right"></i></span>
+            </button>
+          </div>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

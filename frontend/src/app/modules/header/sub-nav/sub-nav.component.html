@@ -1,0 +1,8 @@
+<ul class="nscroll-nav__list" fxLayout="row">
+  <li *ngFor="let navItem of nav" class="scroll-nav__item disabled" fxFlex fxLayoutAlign="center center">
+    <a mat-button class="link" [routerLink]="['/', navItem.parent, navItem._id]" [routerLinkActive]="['link_active']"
+      [routerLinkActiveOptions]="{exact: true}">
+      <span class="link__text">{{navItem.name}}</span>
+    </a>
+  </li>
+</ul>

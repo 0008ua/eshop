@@ -1,8 +1,15 @@
-<ul class="nscroll-nav__list" fxLayout="row">
-  <li *ngFor="let navItem of scrollNav" class="scroll-nav__item disabled" fxFlex fxLayoutAlign="center center">
-    <a mat-button class="link" [routerLink]="['/', navItem.parent, navItem._id]" [routerLinkActive]="['link_active']"
-      [routerLinkActiveOptions]="{exact: true}">
-      <span class="link__text">{{navItem.name}}</span>
-    </a>
-  </li>
-</ul>
+<div class="scroll-nav__wrapper">
+  <ul class="scroll-nav__list" [ngClass]="{'scroll-nav__list_opened': showScrollMenu}" (click)="switchScrollMenu()">
+    <li *ngFor="let navItem of nav" class="scroll-nav__item disabled" fxFlex fxLayoutAlign="center center">
+      <a mat-button class="link" (click)="scrollTo(navItem._id)" [ngClass]="{'link_active': elementOnScreen === navItem._id}">
+        <!-- [routerLink]="['/', navItem.parent, navItem._id]" [routerLinkActive]="['link_active']"
+        [routerLinkActiveOptions]="{exact: true}" -->
+        <span class="link__text">{{navItem.name}}</span>
+      </a>
+    </li>
+  </ul>
+  <div *ngIf="navType === 'aside'" class="scroll-nav__button" fxFlexAlign="center" [ngClass]="{'scroll-nav__button_opened': showScrollMenu}"
+    (click)="switchScrollMenu()">
+      <i class="fas" [ngClass]="'fa-angle-right'"></i>
+  </div>
+</div>

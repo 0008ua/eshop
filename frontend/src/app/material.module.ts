@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {
-  MatButtonModule, MatIconModule, MatInputModule, MatCardModule,
+  MatButtonModule, MatIconModule, MatInputModule, MatCardModule, MatProgressBarModule,
  } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatInputModule,
     MatCardModule,
+    MatProgressBarModule,
     // BrowserModule,
     // BrowserAnimationsModule,
     ],
@@ -21,6 +22,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatInputModule,
     MatCardModule,
+    MatProgressBarModule,
   ],
 })
 

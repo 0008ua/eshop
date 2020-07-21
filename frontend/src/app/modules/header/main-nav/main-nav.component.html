@@ -1,16 +1,97 @@
-<ul class="main-nav__list" fxLayout="row">
-  <li *ngFor="let navItem of mainNavCommon" class="main-nav__item" fxFlex fxLayoutAlign="center center">
+<ul class="main-nav__list">
+  <!--  [fxLayout]="navType === 'top' ? 'row' : 'column'"> -->
+  <li *ngFor="let navItem of mainNavCommon" class="main-nav__item" fxLayoutAlign="center center">
     <a mat-button class="link" [routerLink]="['/', navItem._id]" [routerLinkActive]="['link_active']"
       [routerLinkActiveOptions]="{exact: true}">
       <span class="link__text">{{navItem.name}}</span>
     </a>
   </li>
   <li fxFlex></li>
-  <li *ngFor="let navItem of mainNavSystem" class="main-nav__item" fxFlex fxLayoutAlign="center center">
-    <a mat-button class="link" [routerLink]="['/', navItem._id]" [routerLinkActive]="['link_active']"
+
+  <!-- <ng-container  *ngFor="let navItem of mainNavSystem"> -->
+  <li class="main-nav__item" fxLayoutAlign="center center">
+    <a mat-button class="link" [routerLink]="['/', 'feedback']" [routerLinkActive]="['link_active']"
       [routerLinkActiveOptions]="{exact: true}">
-      <i class="link__icon item fas fa-share"></i>
-      <span class="link__text">{{navItem.name}}</span>
+      <i class="link__icon item far fa-envelope"></i>
+      <span class="link__text">Feedback</span>
     </a>
   </li>
+
+  <li *ngIf="allowTo('notUser')" class="main-nav__item" fxLayoutAlign="center center">
+    <a mat-button class="link" [routerLink]="['/', 'user', 'login']" [routerLinkActive]="['link_active']"
+      [routerLinkActiveOptions]="{exact: true}">
+      <i class="link__icon item fas fa-sign-in-alt"></i>
+      <span class="link__text">Login</span>
+    </a>
+  </li>
+
+  <li *ngIf="allowTo('user')" class="main-nav__item" fxLayoutAlign="center center">
+    <a mat-button class="link" [routerLink]="['/', 'user', 'profile']" [routerLinkActive]="['link_active']"
+      [routerLinkActiveOptions]="{exact: true}">
+      <img class="link__photo" src="{{user.photoUrl}}" alt="users picture">
+      <span class="link__text">{{user.displayName}}</span>
+    </a>
+  </li>
+
+    <li *ngIf="allowTo('manager')" class="main-nav__item" fxLayoutAlign="center center">
+      <a mat-button class="link" [routerLink]="['/', 'user', 'dashboard']" [routerLinkActive]="['link_active']"
+        [routerLinkActiveOptions]="{exact: true}">
+        <i class="link__icon item fas fa-cogs"></i>
+        <span class="link__text">Dashboard</span>
+      </a>
+    </li>
+
+        <li *ngIf="allowTo('guest')" class="main-nav__item" fxLayoutAlign="center center">
+          <a mat-button class="link" (click)="logout()">
+            <i class="link__icon item fas fa-door-open"></i>
+            <span class="link__text">Logout</span>
+          </a>
+        </li>
+  <!-- </ng-container > -->
+  <!-- 
+
+    <div class="cell" fxFlex="100">
+      <a mat-button class="link" [routerLink]="['/', 'feedback']" [routerLinkActive]="['link_active']"
+        [routerLinkActiveOptions]="{exact: false}">
+        <i class="link__icon far fa-envelope"></i>
+        <span class="link__icon-text">{{'feedback' | translate}}</span>
+      </a>
+    </div>
+    
+    <div *ngIf="allowTo('notUser')" class="cell" fxFlex="100">
+      <a mat-button class="link" [routerLink]="['/', 'user', 'login']" [routerLinkActive]="['link_active']"
+        [routerLinkActiveOptions]="{exact: false}">
+        <i class="link__icon fas fa-sign-in-alt"></i>
+        <span class="link__icon-text">{{'signin' | translate}}</span>
+      </a>
+    </div>
+    
+    <div *ngIf="allowTo('user')" class="cell" fxFlex="100">
+      <a mat-button class="link" [routerLink]="['/', 'user', 'profile']" [routerLinkActive]="['link_active']"
+        [routerLinkActiveOptions]="{exact: false}">
+        <img class="link__photo" src="{{user.photoUrl}}" aly="users picture">
+        <span class="link__icon-text">{{user.displayName}}</span>
+      </a>
+    </div>
+    
+    <div *ngIf="allowTo('manager')" class="cell" fxFlex="100">
+      <a mat-button class="link" [routerLink]="['/', 'dashboard', 'product-form']" [routerLinkActive]="['link_active']"
+        [routerLinkActiveOptions]="{exact: false}">
+        <i class="link__icon fas fa-cogs"></i>
+        <span class="link__icon-text">{{'dashboard' | translate}}</span>
+      </a>
+    </div>
+    <div *ngIf="allowTo('guest')" class="cell" fxFlex="100">
+      <a mat-button class="link" (click)="logout()">
+        <i class="link__icon fas fa-door-open"></i>
+        <span class="link__icon-text">{{'logout' | translate}}</span>
+      </a>
+    </div>
+    <div class="cell" fxFlex="100">
+      <a mat-button class="link" (click)="switchLanguage()">
+        <i class="link__icon fas fa-globe fa-1x"></i>
+        <span class="link__icon-text">{{language}}</span>
+      </a>
+    </div> -->
+
 </ul>

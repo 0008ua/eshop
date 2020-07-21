@@ -1,5 +1,6 @@
 const mongoose = require('../config/mongoose');
 const Schema = mongoose.Schema;
+const config = require('../config');
 
 const UserSchema = new Schema({
   profile: {
@@ -26,9 +27,9 @@ const UserSchema = new Schema({
   emailVerified: {
     type: Boolean,
   },
-  photoUrl: { //
+  photoUrl: {
     type: String,
-    // default: config.get(defaultAvatarUrl),
+    default: config.get('defaults.userPicture'),
   },
   displayName: { //
     type: String,

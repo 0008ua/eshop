@@ -1,4 +1,5 @@
-<section *ngFor="let product of products">
+<section *ngFor="let product of products" [id]="product._id" class="container-v"
+(elementOnScreen)="onElementOnScreen(product._id)" appScrolling #scrollerMarker>
     <app-product-feed [product]="product"></app-product-feed>
 
 </section>

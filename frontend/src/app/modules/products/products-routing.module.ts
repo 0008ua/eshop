@@ -6,11 +6,11 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'products',
     component: ProductsComponent,
   },
   {
-    path: ':product',
+    path: 'products/:product',
     component: ProductDetailComponent,
   },
 ];

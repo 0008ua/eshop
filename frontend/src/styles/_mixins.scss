@@ -1,4 +1,4 @@
-@import './material';
+@import './variables';
 
 // xs          0 -  599 / p: 8|0 / 1col     - 599 / 1col     - 599
 // sm        600 -  959 / p: 8   / 3col 184 - 303 / 2col 276 - 455
@@ -18,11 +18,6 @@
 // x500 393x619 699x313 // 980x1544 981x439
 //  k50 360x560 640x280 // 980x1525 980x429
 
-$screen-xs-min: 0px;
-$screen-sm-min: 600px;
-$screen-md-min: 960px;
-$screen-lg-min: 1280px;
-$screen-xl-min: 1920px;
 
 @mixin xs	{ // 0-599
   @media screen and (max-width: $screen-sm-min - 1px) {

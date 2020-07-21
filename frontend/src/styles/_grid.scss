@@ -1,9 +1,5 @@
 @import "./mixins";
 
-$space-gt-md: 12px;
-$space-md: 12px;
-$space-sm: 8px;
-$space-xs: 8px;
 
 // x - scale parameter
 @mixin responsive-padding($x) {

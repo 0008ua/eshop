@@ -8,6 +8,9 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        },
+        "@ngrx/schematics:component": {
+          "styleext": "scss"
         }
       },
       "root": "",
@@ -131,6 +134,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "eshop"
+    }
+  },
+  "defaultProject": "eshop",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

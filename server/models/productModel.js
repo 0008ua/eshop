@@ -1,5 +1,6 @@
 const mongoose = require('../config/mongoose');
 const Schema = mongoose.Schema;
+const config = require('../config');
 
 const ProductSchema = new Schema({
   _id: {
@@ -16,7 +17,7 @@ const ProductSchema = new Schema({
   },
   picture: {
     type: String,
-    // default: config.get('defaults.userPicture'),
+    default: config.get('defaults.productPicture'),
   },
   description: {
     type: String,

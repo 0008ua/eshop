@@ -1,39 +1,41 @@
-<div class="header__logo cell" fxFlex="20" fxLayoutAlign="center center">
- <a class="link" href="#">Logo</a>
-</div>
-<nav class="header__main-nav main-nav cell" fxFlex="80" fxLayoutAlign="start center">
-  <app-main-nav fxFlex></app-main-nav>
-</nav>
-<nav *ngIf="scrollNav?.length" class="header__scroll-nav scroll-nav cell" fxFlex="100" fxLayoutAlign="center center">
-  <app-scroll-nav [scrollNav]="scrollNav"></app-scroll-nav>
-</nav>
+<header class="header" fxLayout="row wrap">
+  <div class="header__logo" fxFlex="20" fxLayoutAlign="center center">
+    <a class="link" href="#">Logo</a>
+  </div>
+  <!-- top position -->
+  <nav class="header__main-nav main-nav" [ngClass]="['main-nav_' + navType, 'header__main-nav_' + navType]"
+    fxHide.lt-md="true" fxFlex="80" fxLayoutAlign="start center" appScrolling
+    (elementSticky)="elementSticky($event)">
+    <app-main-nav fxFlex [navType]="navType"></app-main-nav>
+  </nav>
+  <!-- aside position -->
+  <nav class="header__main-nav main-nav animationAppear05s"
+    [ngClass]="['main-nav_' + navType, 'header__main-nav_' + navType, showMainMenu ? '' : 'display-none']"
+    fxHide.gt-sm="true" (click)="switchMainMenu()">
+    <app-main-nav [navType]="navType"></app-main-nav>
+  </nav>
 
+  <div fxFlex fxHide.gt-sm="true" fxFlex="60"></div>
 
-<!-- <header class="header">
-  <app-header>
-    <div class="header__logo">logo</div>
-    <nav class="header__main-nav main-nav">
-      <app-main-nav>
-        <ul class="main-nav__list">
-          <li class="main-nav__item"></li>
-          <li class="main-nav__item"></li>
-          <li class="main-nav__item"></li>
-        </ul>
-      </app-main-nav>
-    </nav>
-    <nav class="header__scroll-nav scroll-nav">
-      <app-scroll-nav>
-        <ul class="scroll-nav__list">
-          <li class="scroll-nav__item link">
-            <a class="link__anchor">
-              <i class="link__icon fas fa-share"></i>
-              <span class="link__text">text</span>
-            </a>
-          </li>
-          <li class="scroll-nav__item"></li>
-          <li class="scroll-nav__item"></li>
-        </ul>
-      </app-scroll-nav>
-    </nav>
-  </app-header>
-</header> -->
+  <div class="header__menu-button" fxHide.gt-sm="true" fxFlex="20" fxLayoutAlign="end center">
+    <a class="link" mat-button aria-label="Menu" (click)="switchMainMenu()">
+      <i *ngIf="!showMainMenu" class="link__icon item fas fa-bars"></i>
+      <i *ngIf="showMainMenu" class="link__icon item fas fa-ellipsis-v"></i>
+    </a>
+  </div>
+
+  <nav *ngIf="subNav?.length" class="header__sub-nav sub-nav" fxFlex="100" fxLayoutAlign="center center">
+    <app-sub-nav [nav]="subNav"></app-sub-nav>
+  </nav>
+  <!-- top position -->
+  <nav *ngIf="scrollNav?.length" class="header__scroll-nav scroll-nav"
+    [ngClass]="['scroll-nav_' + navType, 'header__scroll-nav_' + navType, sticky ? 'scroll-nav_top_sticky stickyBarAnimation' : '']"
+    fxHide.lt-md="true" fxFlex="100" fxLayoutAlign="center center">
+    <app-scroll-nav [nav]="scrollNav"></app-scroll-nav>
+  </nav>
+  <!-- aside position -->
+  <nav *ngIf="scrollNav?.length" class="header__scroll-nav scroll-nav"
+    [ngClass]="['scroll-nav_' + navType, 'header__scroll-nav_' + navType]" fxHide.gt-sm="true">
+    <app-scroll-nav [nav]="scrollNav" [navType]="navType"></app-scroll-nav>
+  </nav>
+</header>

@@ -24,6 +24,12 @@
     "@angular/pwa": "^0.901.8",
     "@angular/router": "~8.2.8",
     "@angular/service-worker": "~8.2.8",
+    "@auth0/angular-jwt": "^5.0.1",
+    "@ngrx/effects": "^8.6.0",
+    "@ngrx/schematics": "^9.2.0",
+    "@ngrx/store": "^8.6.0",
+    "@ngrx/store-devtools": "^8.6.0",
+    "ngx-cookie-service": "^3.0.4",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

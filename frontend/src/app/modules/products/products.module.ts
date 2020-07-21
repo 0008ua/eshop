@@ -6,6 +6,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
 import { ProductsRoutingModule } from './products-routing.module';
+import { DirectivesModule } from 'src/app/directives/directives.module';
 
 
 
@@ -14,8 +15,14 @@ import { ProductsRoutingModule } from './products-routing.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ProductsRoutingModule,
+    // uncomment to use as lazy loading module
+    // this module is using by home component (eager loading)
+    // ProductsRoutingModule,
     MaterialModule,
+    DirectivesModule,
+  ],
+  exports: [
+    ProductFeedComponent
   ]
 })
 export class ProductsModule { }

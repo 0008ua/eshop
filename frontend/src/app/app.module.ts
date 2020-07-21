@@ -11,7 +11,19 @@ import { HomeComponent } from './components/home/home.component';
 import { Page404Component } from './components/page404/page404.component';
 import { HeaderModule } from './modules/header/header.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsModule } from './modules/products/products.module';
+import { DirectivesModule } from './directives/directives.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './effects/app.effects';
+import { ScreenEffects } from './effects/screen.effects';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from './services/http-interceptor.service';
+import { CookieService } from 'ngx-cookie-service';
+import { UserEffects } from './effects/user.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +32,28 @@ import { HttpClientModule } from '@angular/common/http';
     Page404Component
   ],
   imports: [
+    ProductsModule,
     BrowserModule,
     AppRoutingModule,
+    DirectivesModule,
     HeaderModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    EffectsModule.forRoot([AppEffects, ScreenEffects, UserEffects])
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

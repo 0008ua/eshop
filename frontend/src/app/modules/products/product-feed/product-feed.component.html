@@ -1,1 +1,14 @@
-{{product | json}}
+<div class="product-feed container">
+  <div class="row" fxLayout="row">
+    <div class="cell" fxFlex="100">
+      <h2 class="product-feed__title">{{product.name}}</h2>
+    </div>
+        <div class="cell" fxFlex="20">
+          <img class="product-feed__picture" src="/assets/other/default_product.png">
+        </div>
+    <div class="cell" fxFlex="80">
+      <p class="product-feed__description">{{product.description}}</p>
+    </div>
+
+  </div>
+</div>
