@@ -27,7 +27,7 @@
     "nodemailer": "^6.4.8",
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
-    "pug": "2.0.0-beta11",
+    "pug": "3.0.1",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.8",
     "winston": "^3.2.1"
